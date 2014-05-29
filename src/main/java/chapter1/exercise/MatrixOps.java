@@ -3,6 +3,12 @@ package chapter1.exercise;
 import edu.princeton.cs.introcs.StdOut;
 import edu.princeton.cs.introcs.StdRandom;
 
+/**
+ * 关于矩阵的一些操作
+ * 
+ * @author liuduo
+ * 
+ */
 public class MatrixOps {
 	/**
 	 * 构造一个M行N列的boolean型矩阵,矩阵中每个元素的值随机
