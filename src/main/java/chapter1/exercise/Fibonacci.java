@@ -1,4 +1,4 @@
-package chapter1.algorithm;
+package chapter1.exercise;
 
 import edu.princeton.cs.introcs.StdOut;
 
