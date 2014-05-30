@@ -8,15 +8,19 @@ public class OptimizedFibonacci {
 		for (int i = 0; i < result.length; i++) {
 			result[i] = -1l;
 		}
-		result[0] = 0l;
-		result[1] = 1l;
 	}
 
 	public static long F(int N) {
-		if (N == 0)
-			return result[0];
-		if (N == 1)
-			return result[1];
+		if (N == 0) {
+			long value = 0;
+			result[0] = value;
+			return value;
+		}
+		if (N == 1) {
+			long value = 1;
+			result[1] = value;
+			return value;
+		}
 
 		long first;
 		if (result[N - 1] == -1) {
@@ -32,9 +36,9 @@ public class OptimizedFibonacci {
 		} else {
 			second = result[N - 2];
 		}
-		long sum = first + second;
-		result[N] = sum;
-		return sum;
+		long value = first + second;
+		result[N] = value;
+		return value;
 	}
 
 	public static void main(String[] args) {
