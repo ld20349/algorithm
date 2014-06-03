@@ -11,11 +11,6 @@ public class Test {
 		return mystery(a * a, b / 2) * a;
 	}
 
-	public static void main(String[] args) {
-		StdOut.println(mystery(10, 4));
-		StdOut.println(mystery(5, 3));
-	}
-
 	public static String exR1(int n) {
 		if (n <= 0)
 			return "";
@@ -42,5 +37,9 @@ public class Test {
 				return mid;
 		}
 		return -1;
+	}
+	
+	public static void main(String[] args) {
+		StdOut.println(1+2+"3");
 	}
 }
