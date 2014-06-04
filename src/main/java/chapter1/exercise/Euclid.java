@@ -1,9 +1,11 @@
-package chapter1.algorithm;
+package chapter1.exercise;
 
 import edu.princeton.cs.introcs.StdOut;
 
-public class Euclidean {
+public class Euclid {
 	public static int gcd(int p, int q) {
+		StdOut.println(p + "\t" + q);
+
 		if (q == 0) {
 			return p;
 		}
@@ -12,6 +14,8 @@ public class Euclidean {
 	}
 
 	public static void main(String[] args) {
-		StdOut.println(gcd(105, 24));
+		int p = Integer.parseInt(args[0]);
+		int q = Integer.parseInt(args[1]);
+		StdOut.println(gcd(p, q));
 	}
 }
