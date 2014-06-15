@@ -50,21 +50,21 @@ public class MatrixOps {
 	/**
 	 * 打印出一个M行N列的二维数组的转置（交换行和列）
 	 */
-	public static void printMatrixnversion(boolean[][] a) {
-		final int inversionM = a[0].length;
-		final int inversionN = a.length;
-		boolean[][] inversion = new boolean[inversionM][inversionN];
-		for (int i = 0; i < inversionM; i++)
-			for (int j = 0; j < inversionN; j++)
-				inversion[i][j] = a[j][i];
+	public static void printTransposedMatrix(boolean[][] a) {
+		final int transposedM = a[0].length;
+		final int transposedN = a.length;
+		boolean[][] transposedMatrix = new boolean[transposedM][transposedN];
+		for (int i = 0; i < transposedM; i++)
+			for (int j = 0; j < transposedN; j++)
+				transposedMatrix[i][j] = a[j][i];
 
-		printMatrix(inversion);
+		printMatrix(transposedMatrix);
 	}
 
 	public static void main(String[] args) {
 		boolean[][] matrix = constructRandomBooleanMatrix(2, 2);
 		printMatrix(matrix);
 		StdOut.println();
-		printMatrixnversion(matrix);
+		printTransposedMatrix(matrix);
 	}
 }

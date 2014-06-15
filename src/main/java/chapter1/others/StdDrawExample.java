@@ -50,6 +50,6 @@ public class StdDrawExample {
 	}
 
 	public static void main(String[] args) {
-		sortedRandomArray();
+		randomArray();
 	}
 }
