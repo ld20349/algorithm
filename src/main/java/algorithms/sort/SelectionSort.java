@@ -11,13 +11,13 @@ public class SelectionSort extends Sort {
 	@Override
 	protected void sort(int[] a) {
 		for (int i = 0; i < a.length - 1; i++) {
-			int maxIndex = 0;
+			int max = 0;
 			for (int j = 1; j < a.length - i; j++) {
-				if (a[j] > a[maxIndex]) {
-					maxIndex = j;
+				if (a[j] > a[max]) {
+					max = j;
 				}
 			}
-			swap(a, maxIndex, a.length - 1 - i);
+			swap(a, max, a.length - 1 - i);
 		}
 	}
 
