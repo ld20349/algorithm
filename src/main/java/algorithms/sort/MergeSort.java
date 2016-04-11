@@ -9,7 +9,7 @@ package algorithms.sort;
 public class MergeSort extends Sort {
 
 	@Override
-	protected void sort(int[] a) {
+	public void sort(int[] a) {
 		sort(a, 0, a.length - 1);
 	}
 

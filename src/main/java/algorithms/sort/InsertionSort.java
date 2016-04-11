@@ -9,7 +9,7 @@ package algorithms.sort;
 public class InsertionSort extends Sort {
 
 	@Override
-	protected void sort(int[] a) {
+	public void sort(int[] a) {
 		int i, j, t;
 		for (i = 1; i < a.length; i++) {
 			t = a[i];

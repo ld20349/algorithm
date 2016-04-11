@@ -9,7 +9,7 @@ package algorithms.sort;
 public class SelectionSort extends Sort {
 
 	@Override
-	protected void sort(int[] a) {
+	public void sort(int[] a) {
 		for (int i = 0; i < a.length - 1; i++) {
 			int max = 0;
 			for (int j = 1; j < a.length - i; j++) {

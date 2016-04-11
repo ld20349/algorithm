@@ -32,7 +32,7 @@ public abstract class Sort {
 		a[j] = t;
 	}
 
-	protected abstract void sort(int[] a);
+	public abstract void sort(int[] a);
 
 	public void sort() {
 		int[] a1 = Arrays.copyOf(a, a.length);
