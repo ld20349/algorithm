@@ -1,5 +1,11 @@
 package algorithms.sort;
 
+/**
+ * 快速排序，不稳定，最差时间复杂度O(n*n)，最优时间复杂度O(n*logn)，平均时间复杂度O(n*logn)，需要辅助空间O(1)
+ * 
+ * @author liuduo
+ *
+ */
 public class QuickSort extends Sort {
 
 	@Override
