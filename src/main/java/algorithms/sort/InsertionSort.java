@@ -11,12 +11,12 @@ public class InsertionSort extends Sort {
 	@Override
 	protected void sort(int[] a) {
 		int i, j, t;
-		for (j = 1; j <= a.length - 1; j++) {
-			t = a[j];
-			for (i = j - 1; i >= 0 && a[i] > t; i--) {
-				a[i + 1] = a[i];
+		for (i = 1; i < a.length; i++) {
+			t = a[i];
+			for (j = i - 1; j >= 0 && a[j] > t; j--) {
+				a[j + 1] = a[j];
 			}
-			a[i + 1] = t;
+			a[j + 1] = t;
 		}
 	}
 
