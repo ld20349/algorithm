@@ -42,7 +42,7 @@ class MaxHeap {
 	private void maxify(int i) {
 		int l = left(i);
 		int r = right(i);
-		int largest = (l < heapSize && heap[l] > heap[i]) ? l : r < heapSize
+		int largest = l < heapSize && heap[l] > heap[i] ? l : r < heapSize
 				&& heap[r] > heap[i] ? r : i;
 		if (largest == i || largest >= heapSize) {
 			return;

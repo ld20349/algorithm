@@ -25,8 +25,7 @@ public class QuickSort extends Sort {
 		int i = p - 1;
 		for (int j = p; j < r; j++) {
 			if (a[j] < a[r]) {
-				i++;
-				swap(a, i, j);
+				swap(a, ++i, j);
 			}
 		}
 		swap(a, i + 1, r);
