@@ -1,6 +1,7 @@
 package algorithms.sort;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,30 +14,25 @@ public class RadixSort extends Sort {
 
 	@Override
 	public void sort(int[] a) {
-		List<List<Integer>> buckets = new ArrayList<>(10);
-		for (int i = 0; i < 10; i++) {
-			buckets.add(new ArrayList<>());
-		}
+		@SuppressWarnings("unchecked")
+		List<Integer>[] buckets = new List[10];
+		for (int i = 0; i < buckets.length; i++)
+			buckets[i] = new ArrayList<>();
 		int max = a[0];
-		for (int i = 1; i < a.length; i++) {
-			if (a[i] > max) {
+		for (int i = 1; i < a.length; i++)
+			if (a[i] > max)
 				max = a[i];
-			}
-		}
 		int digits = 1;
 		while ((max /= 10) > 0)
 			digits++;
 		for (int i = 1; i <= digits; i++) {
-			for (int e : a) {
-				buckets.get((e / (int) Math.pow(10, i - 1)) % 10).add(e);
-			}
+			for (int e : a)
+				buckets[e / (int) Math.pow(10, i - 1) % 10].add(e);
 			int j = 0;
-			for (List<Integer> bucket : buckets) {
-				for (int e : bucket) {
+			for (List<Integer> b : buckets)
+				for (int e : b)
 					a[j++] = e;
-				}
-			}
-			buckets.forEach(List::clear);
+			Arrays.stream(buckets).forEach(List::clear);
 		}
 	}
 
