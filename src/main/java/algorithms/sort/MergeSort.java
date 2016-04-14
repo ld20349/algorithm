@@ -1,7 +1,7 @@
 package algorithms.sort;
 
 /**
- * 归并排序,稳定，最差时间复杂度O(n*logn)，最优时间复杂度O(n)，平均时间复杂度O(n*logn)，需要辅助空间O(n)
+ * 归并排序，稳定，最差时间复杂度O(n*logn)，最优时间复杂度O(n)，平均时间复杂度O(n*logn)，需要辅助空间O(n)
  * 
  * @author liuduo
  *

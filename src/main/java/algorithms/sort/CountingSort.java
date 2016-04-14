@@ -1,7 +1,7 @@
 package algorithms.sort;
 
 /**
- * 计数排序
+ * 计数排序，稳定，最差时间复杂度O(n+k)，最优时间复杂度O(n+k)，平均时间复杂度O(n+k)，需要辅助空间O(n+k)
  * 
  * @author liuduo
  *
