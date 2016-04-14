@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 基数排序，稳定，最差时间复杂度O(n)，最优时间复杂度O(n)，平均时间复杂度O(n)，需要辅助空间O(n)
+ * 基数排序，稳定，最差时间复杂度O(n)，最优时间复杂度O(n)，平均时间复杂度O(n)，需要辅助空间O(k)，k为桶的数量
  * 
  * @author liuduo
  *
