@@ -16,7 +16,7 @@ public class ArrayQueue implements Queue {
 	}
 
 	@Override
-	public void offer(Object e) {
+	public boolean offer(Object e) {
 		if (rear == data.length - 1) {
 			Object[] newData = new Object[data.length * 2];
 			System.arraycopy(data, 0, newData, 0, data.length);
@@ -24,6 +24,7 @@ public class ArrayQueue implements Queue {
 		}
 		data[rear++] = e;
 		size++;
+		return true;
 	}
 
 	@Override

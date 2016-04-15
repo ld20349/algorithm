@@ -1,7 +1,7 @@
 package datastructures.queue;
 
 public interface Queue {
-	void offer(Object e);
+	boolean offer(Object e);
 
 	Object poll();
 
