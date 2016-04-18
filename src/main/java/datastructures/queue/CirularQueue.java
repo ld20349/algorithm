@@ -1,56 +1,50 @@
 package datastructures.queue;
 
 public class CirularQueue implements Queue {
-	private Object[] data;
-	private int size;
+	private static final int defaultSize = 10;
+
+	private Object[] queue;
+	private int maxSize;
+	private int count;
 	private int front;
 	private int rear;
 
-	public CirularQueue(int capacity) {
-		data = new Object[capacity];
-		size = 0;
+	public CirularQueue() {
+		queue = new Object[defaultSize];
+		maxSize = queue.length;
+		count = 0;
 		front = 0;
 		rear = 0;
 	}
 
 	@Override
 	public boolean offer(Object e) {
-		if (size == data.length)
+		if (count == maxSize)
 			return false;
-		data[rear] = e;
-		rear = (rear + 1) % data.length;
-		size++;
+		queue[rear] = e;
+		rear = (rear + 1) % maxSize;
+		count++;
 		return true;
 	}
 
 	@Override
 	public Object poll() {
-		if (size == 0)
+		if (count == 0)
 			return null;
-		Object e = data[front];
-		data[front] = null;
-		front = (front + 1) % data.length;
-		size--;
+		Object e = queue[front];
+		queue[front] = null;
+		front = (front + 1) % maxSize;
+		count--;
 		return e;
 	}
 
 	@Override
 	public Object peek() {
-		return size == 0 ? null : data[front];
+		return count == 0 ? null : queue[front];
 	}
 
 	@Override
 	public int size() {
-		return size;
-	}
-
-	public static void main(String[] args) {
-		CirularQueue queue = new CirularQueue(5);
-		for (int i = 1; i <= 5; i++)
-			queue.offer(i);
-		queue.poll();
-		queue.poll();
-		queue.offer(6);
-		queue.offer(7);
+		return count;
 	}
 }
