@@ -27,28 +27,20 @@ public class MergeSort extends Sort {
 		int i = left;
 		int j = mid + 1;
 		int k = 0;
-		while (i <= mid && j <= right) {
-			if (a[i] < a[j]) {
+		while (i <= mid && j <= right)
+			if (a[i] < a[j])
 				r[k++] = a[i++];
-			} else {
+			else
 				r[k++] = a[j++];
-			}
-		}
-		while (i <= mid) {
+		while (i <= mid)
 			r[k++] = a[i++];
-		}
-		while (j <= right) {
+		while (j <= right)
 			r[k++] = a[j++];
-		}
-		for (int l = 0; l < r.length; l++) {
+		for (int l = 0; l < r.length; l++)
 			a[left + l] = r[l];
-		}
 	}
 
 	public static void main(String[] args) {
-		// int[] t = { 1, 2, 4, 8, 3, 5, 7, 9 };
-		// new MergeSort().merge(t, 0, 3, 7);
-		// System.out.println(Arrays.toString(t));
 		new MergeSort().sort();
 	}
 }
