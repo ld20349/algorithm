@@ -23,11 +23,9 @@ public class QuickSort extends Sort {
 
 	private int partition(int[] a, int p, int r) {
 		int i = p - 1;
-		for (int j = p; j < r; j++) {
-			if (a[j] < a[r]) {
+		for (int j = p; j < r; j++)
+			if (a[j] < a[r])
 				swap(a, ++i, j);
-			}
-		}
 		swap(a, i + 1, r);
 		return i + 1;
 	}
