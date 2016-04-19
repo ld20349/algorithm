@@ -1,17 +1,17 @@
 package datastructures.stack;
 
 public class LinkedStack implements Stack {
-	private Node last;
+	private Node front;
 	private int size;
 
 	public LinkedStack() {
-		last = null;
+		front = null;
 		size = 0;
 	}
 
 	@Override
 	public void push(Object e) {
-		last = new Node(e, last);
+		front = new Node(e, front);
 		size++;
 	}
 
@@ -19,15 +19,15 @@ public class LinkedStack implements Stack {
 	public Object pop() {
 		if (size == 0)
 			return null;
-		Object e = last.element;
-		last = last.next;
+		Object e = front.element;
+		front = front.next;
 		size--;
 		return e;
 	}
 
 	@Override
 	public Object peek() {
-		return size == 0 ? null : last.element;
+		return size == 0 ? null : front.element;
 	}
 
 	@Override
