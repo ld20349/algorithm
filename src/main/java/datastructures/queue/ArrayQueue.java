@@ -5,32 +5,32 @@ public class ArrayQueue implements Queue {
 
 	private Object[] elementData;
 	private int size;
-	private int first;
-	private int last;
+	private int front;
+	private int rear;
 
 	public ArrayQueue() {
 		elementData = new Object[DEFAULT_CAPACITY];
 		size = 0;
-		first = 0;
-		last = 0;
+		front = 0;
+		rear = 0;
 	}
 
 	public ArrayQueue(int capacity) {
 		elementData = new Object[capacity];
 		size = 0;
-		first = 0;
-		last = 0;
+		front = 0;
+		rear = 0;
 	}
 
 	@Override
 	public boolean offer(Object e) {
-		if (last == elementData.length) {
+		if (rear == elementData.length) {
 			Object[] newElementData = new Object[elementData.length * 2];
 			System.arraycopy(elementData, 0, newElementData, 0,
 					elementData.length);
 			elementData = newElementData;
 		}
-		elementData[last++] = e;
+		elementData[rear++] = e;
 		size++;
 		return true;
 	}
@@ -39,15 +39,15 @@ public class ArrayQueue implements Queue {
 	public Object poll() {
 		if (size == 0)
 			return null;
-		Object e = elementData[first];
-		elementData[first++] = null;
+		Object e = elementData[front];
+		elementData[front++] = null;
 		size--;
 		return e;
 	}
 
 	@Override
 	public Object peek() {
-		return size == 0 ? null : elementData[first];
+		return size == 0 ? null : elementData[front];
 	}
 
 	@Override
