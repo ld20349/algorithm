@@ -16,6 +16,9 @@ public class HeapSort extends Sort {
 		mh.heapSort();
 	}
 
+	public static void main(String[] args) {
+		new HeapSort().sort();
+	}
 }
 
 class MaxHeap {
@@ -42,11 +45,11 @@ class MaxHeap {
 	private void maxify(int i) {
 		int l = left(i);
 		int r = right(i);
-		int largest = l < heapSize && heap[l] > heap[i] ? l : r < heapSize
-				&& heap[r] > heap[i] ? r : i;
-		if (largest == i || largest >= heapSize) {
+		int largest = l < heapSize && heap[l] > heap[i] ? l : i;
+		if (r < heapSize && heap[r] > heap[largest])
+			largest = r;
+		if (largest == i)
 			return;
-		}
 		int t = heap[i];
 		heap[i] = heap[largest];
 		heap[largest] = t;
@@ -54,9 +57,8 @@ class MaxHeap {
 	}
 
 	public void buildMaxHeap() {
-		for (int i = heapSize / 2 - 1; i >= 0; i--) {
+		for (int i = heapSize / 2 - 1; i >= 0; i--)
 			maxify(i);
-		}
 	}
 
 	public void heapSort() {
