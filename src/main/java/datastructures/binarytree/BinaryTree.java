@@ -1,10 +1,17 @@
 package datastructures.binarytree;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.Stack;
+
 public class BinaryTree {
 	private TreeNode root;
 
 	/**
-	 * 新建一棵二叉树 A B C D E F
+	 * 新建一棵二叉树
+	 *           A 
+     *     B          C 
+     *  D     E            F
 	 */
 	public BinaryTree() {
 		root = new TreeNode("A");
@@ -77,27 +84,130 @@ public class BinaryTree {
 		}
 	}
 
-	public void preOrder(TreeNode subTree) {
+	private void preorderTraversal(TreeNode subTree) {
 		if (subTree == null)
 			return;
-		System.out.println(subTree.data);
-		preOrder(subTree.left);
-		preOrder(subTree.right);
+		System.out.print(subTree.data + " ");
+		preorderTraversal(subTree.left);
+		preorderTraversal(subTree.right);
 	}
 
-	public void inOrder(TreeNode subTree) {
+	private void inorderTraversal(TreeNode subTree) {
 		if (subTree == null)
 			return;
-		inOrder(subTree.left);
-		System.out.println(subTree.data);
-		inOrder(subTree.right);
+		inorderTraversal(subTree.left);
+		System.out.print(subTree.data + " ");
+		inorderTraversal(subTree.right);
 	}
 
-	public void postOrder(TreeNode subTree) {
+	private void postorderTraversal(TreeNode subTree) {
 		if (subTree == null)
 			return;
-		postOrder(subTree.left);
-		postOrder(subTree.right);
-		System.out.println(subTree.data);
+		postorderTraversal(subTree.left);
+		postorderTraversal(subTree.right);
+		System.out.print(subTree.data + " ");
+	}
+
+	/**
+	 * 递归先序遍历
+	 */
+	public void preorderTraversal() {
+		preorderTraversal(root);
+	}
+
+	/**
+	 * 递归中序遍历
+	 */
+	public void inorderTraversal() {
+		inorderTraversal(root);
+	}
+
+	/**
+	 * 递归后序遍历
+	 */
+	public void postorderTraversal() {
+		postorderTraversal(root);
+	}
+
+	/**
+	 * 非递归先序遍历，借用栈来实现
+	 */
+	public void preorderTraversalNonRecursive() {
+		Stack<TreeNode> s = new Stack<>();
+		TreeNode p = root;
+		while (p != null || !s.isEmpty()) {
+			while (p != null) {
+				System.out.print(p.data + " ");
+				s.push(p);
+				p = p.left;
+			}
+			if (!s.isEmpty()) {
+				p = s.pop().right;
+			}
+		}
+	}
+
+	/**
+	 * 非递归中序遍历，借用栈来实现
+	 */
+	public void inorderTraversalNonRecursive() {
+		Stack<TreeNode> s = new Stack<>();
+		TreeNode p = root;
+		while (p != null || !s.isEmpty()) {
+			while (p != null) {
+				s.push(p);
+				p = p.left;
+			}
+			if (!s.isEmpty()) {
+				p = s.pop();
+				System.out.print(p.data + " ");
+				p = p.right;
+			}
+		}
+	}
+
+	/**
+	 * 非递归后序遍历，借用栈来实现
+	 */
+	public void postorderTraversalNonRecursive() {
+		Stack<TreeNode> s = new Stack<>();
+		TreeNode cur = null;
+		TreeNode pre = null;
+		s.push(root);
+		while (!s.isEmpty()) {
+			cur = s.peek();
+			if ((cur.left == null && cur.right == null)
+					|| (pre != null && (pre == cur.left || pre == cur.right))) {
+				System.out.print(cur.data + " ");
+				s.pop();
+				pre = cur;
+			} else {
+				if (cur.right != null)
+					s.push(cur.right);
+				if (cur.left != null)
+					s.push(cur.left);
+			}
+		}
+	}
+
+	/**
+	 * 广度优先遍历（层序遍历），借用队列来实现
+	 */
+	public void breadthFirstTraversal() {
+		Queue<TreeNode> queue = new ArrayDeque<>();
+		queue.offer(root);
+		while (!queue.isEmpty()) {
+			TreeNode p = queue.poll();
+			System.out.print(p.data + " ");
+			if (p.left != null)
+				queue.add(p.left);
+			if (p.right != null)
+				queue.add(p.right);
+		}
+	}
+
+	public static void main(String[] args) {
+		BinaryTree tree = new BinaryTree();
+		tree.breadthFirstTraversal();
 	}
 }
