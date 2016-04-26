@@ -138,13 +138,13 @@ public class BinaryTree {
 	public void preorderTraversalNonRecursive() {
 		Stack<TreeNode> s = new Stack<>();
 		TreeNode p = root;
-		while (p != null || !s.isEmpty()) {
+		while (p != null || !s.empty()) {
 			while (p != null) {
 				System.out.print(p.data + " ");
 				s.push(p);
 				p = p.left;
 			}
-			if (!s.isEmpty()) {
+			if (!s.empty()) {
 				p = s.pop().right;
 			}
 		}
@@ -156,12 +156,12 @@ public class BinaryTree {
 	public void inorderTraversalNonRecursive() {
 		Stack<TreeNode> s = new Stack<>();
 		TreeNode p = root;
-		while (p != null || !s.isEmpty()) {
+		while (p != null || !s.empty()) {
 			while (p != null) {
 				s.push(p);
 				p = p.left;
 			}
-			if (!s.isEmpty()) {
+			if (!s.empty()) {
 				p = s.pop();
 				System.out.print(p.data + " ");
 				p = p.right;
@@ -177,7 +177,7 @@ public class BinaryTree {
 		TreeNode cur = null;
 		TreeNode pre = null;
 		s.push(root);
-		while (!s.isEmpty()) {
+		while (!s.empty()) {
 			cur = s.peek();
 			if ((cur.left == null && cur.right == null)
 					|| (pre != null && (pre == cur.left || pre == cur.right))) {
