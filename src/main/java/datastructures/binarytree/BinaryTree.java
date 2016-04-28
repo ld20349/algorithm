@@ -8,10 +8,7 @@ public class BinaryTree {
 	private TreeNode root;
 
 	/**
-	 * 新建一棵二叉树
-	 *           A 
-     *     B          C 
-     *  D     E            F
+	 * 新建一棵二叉树 A B C D E F
 	 */
 	public BinaryTree() {
 		root = new TreeNode("A");
@@ -109,24 +106,21 @@ public class BinaryTree {
 	}
 
 	/**
-	 * 递归先序遍历
-	 * 结果应为：A B D E C F
+	 * 递归先序遍历 结果应为：A B D E C F
 	 */
 	public void preorderTraversal() {
 		preorderTraversal(root);
 	}
 
 	/**
-	 * 递归中序遍历
-	 * 结果应为：D B E A C F
+	 * 递归中序遍历 结果应为：D B E A C F
 	 */
 	public void inorderTraversal() {
 		inorderTraversal(root);
 	}
 
 	/**
-	 * 递归后序遍历
-	 * 结果应为：D E B F C A
+	 * 递归后序遍历 结果应为：D E B F C A
 	 */
 	public void postorderTraversal() {
 		postorderTraversal(root);
@@ -144,9 +138,8 @@ public class BinaryTree {
 				s.push(p);
 				p = p.left;
 			}
-			if (!s.empty()) {
+			if (!s.empty())
 				p = s.pop().right;
-			}
 		}
 	}
 
@@ -194,8 +187,7 @@ public class BinaryTree {
 	}
 
 	/**
-	 * 广度优先遍历（层序遍历），借用队列来实现
-	 * 结果应为：A B C D E F
+	 * 广度优先遍历（层序遍历），借用队列来实现 结果应为：A B C D E F
 	 */
 	public void breadthFirstTraversal() {
 		Queue<TreeNode> queue = new ArrayDeque<>();
