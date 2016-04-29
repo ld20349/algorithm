@@ -13,9 +13,8 @@ public class InsertionSort extends Sort {
 		int i, j, t;
 		for (i = 1; i < a.length; i++) {
 			t = a[i];
-			for (j = i - 1; j >= 0 && a[j] > t; j--) {
+			for (j = i - 1; j >= 0 && a[j] > t; j--)
 				a[j + 1] = a[j];
-			}
 			a[j + 1] = t;
 		}
 	}

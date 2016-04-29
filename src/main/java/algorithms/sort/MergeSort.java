@@ -23,21 +23,21 @@ public class MergeSort extends Sort {
 	}
 
 	private void merge(int[] a, int left, int mid, int right) {
-		int[] r = new int[right - left + 1];
 		int i = left;
 		int j = mid + 1;
+		int[] r = new int[right - left + 1];
 		int k = 0;
-		while (i <= mid && j <= right)
+		while (i <= mid && j <= right) {
 			if (a[i] < a[j])
 				r[k++] = a[i++];
 			else
 				r[k++] = a[j++];
+		}
 		while (i <= mid)
 			r[k++] = a[i++];
 		while (j <= right)
 			r[k++] = a[j++];
-		for (int l = 0; l < r.length; l++)
-			a[left + l] = r[l];
+		System.arraycopy(r, 0, a, left, r.length);
 	}
 
 	public static void main(String[] args) {

@@ -10,8 +10,8 @@ public class CountingSort extends Sort {
 
 	@Override
 	public void sort(int[] a) {
-		int min = a[0];
-		int max = a[0];
+		int min, max;
+		min = max = a[0];
 		for (int i = 1; i < a.length; i++) {
 			if (a[i] < min)
 				min = a[i];

@@ -62,7 +62,7 @@ class MaxHeap {
 	}
 
 	public void heapSort() {
-		for (int i = 0; i < heap.length; i++) {
+		for (int i = 0; i < heap.length - 1; i++) {
 			int t = heap[0];
 			heap[0] = heap[heapSize - 1];
 			heap[heapSize - 1] = t;

@@ -14,10 +14,6 @@ public class RadixSort extends Sort {
 
 	@Override
 	public void sort(int[] a) {
-		@SuppressWarnings("unchecked")
-		List<Integer>[] buckets = new List[10];
-		for (int i = 0; i < buckets.length; i++)
-			buckets[i] = new ArrayList<>();
 		int max = a[0];
 		for (int i = 1; i < a.length; i++)
 			if (a[i] > max)
@@ -25,6 +21,10 @@ public class RadixSort extends Sort {
 		int digits = 1;
 		while ((max /= 10) > 0)
 			digits++;
+		@SuppressWarnings("unchecked")
+		List<Integer>[] buckets = new List[10];
+		for (int i = 0; i < buckets.length; i++)
+			buckets[i] = new ArrayList<>();
 		for (int i = 1; i <= digits; i++) {
 			for (int e : a)
 				buckets[e / (int) Math.pow(10, i - 1) % 10].add(e);
