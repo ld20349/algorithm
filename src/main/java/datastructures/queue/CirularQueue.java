@@ -1,50 +1,53 @@
 package datastructures.queue;
 
 public class CirularQueue implements Queue {
-	private static final int defaultSize = 10;
+    private static final int DEFAULT_CAPACITY = 5;
 
-	private Object[] queue;
-	private int maxSize;
-	private int count;
-	private int front;
-	private int rear;
+    private Object[] elementData;
+    private int capacity;
+    private int size;
+    private int front;
+    private int rear;
 
-	public CirularQueue() {
-		queue = new Object[defaultSize];
-		maxSize = queue.length;
-		count = 0;
-		front = 0;
-		rear = 0;
-	}
+    public CirularQueue(int capacity) {
+        this.elementData = new Object[capacity];
+        this.capacity = capacity;
+        this.size = 0;
+        this.front = 0;
+        this.rear = 0;
+    }
 
-	@Override
-	public boolean offer(Object e) {
-		if (count == maxSize)
-			return false;
-		queue[rear] = e;
-		rear = (rear + 1) % maxSize;
-		count++;
-		return true;
-	}
 
-	@Override
-	public Object poll() {
-		if (count == 0)
-			return null;
-		Object e = queue[front];
-		queue[front] = null;
-		front = (front + 1) % maxSize;
-		count--;
-		return e;
-	}
+    @Override
+    public boolean offer(Object e) {
+        if (size == capacity) {
+            return false;
+        }
+        elementData[rear] = e;
+        rear = (rear + 1) % capacity;
+        size++;
+        return true;
+    }
 
-	@Override
-	public Object peek() {
-		return count == 0 ? null : queue[front];
-	}
+    @Override
+    public Object poll() {
+        if (size == 0) {
+            return null;
+        }
+        Object element = elementData[front];
+        elementData[front] = null;
+        front = (front + 1) % capacity;
+        size--;
+        return element;
+    }
 
-	@Override
-	public int size() {
-		return count;
-	}
+    @Override
+    public Object peek() {
+        return size == 0 ? null : elementData[front];
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
 }

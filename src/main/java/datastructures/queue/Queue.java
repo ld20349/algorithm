@@ -1,11 +1,11 @@
 package datastructures.queue;
 
-public interface Queue {
+interface Queue {
 	boolean offer(Object e);
 
-	Object poll();
+    Object poll();
 
-	Object peek();
+    Object peek();
 
-	int size();
+    int size();
 }
