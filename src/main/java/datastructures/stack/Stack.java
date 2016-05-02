@@ -1,11 +1,11 @@
 package datastructures.stack;
 
-public interface Stack {
-	void push(Object e);
+interface Stack {
+    void push(Object e);
 
-	Object pop();
+    Object pop();
 
-	Object peek();
+    Object peek();
 
-	int size();
+    int size();
 }
