@@ -3,62 +3,67 @@ package datastructures.list.single;
 import datastructures.list.List;
 
 public class LinkedList implements List {
-	Node head;
-	Node current;
-	int size;
+    private Node head;
+    private Node current;
+    private int size;
 
-	public LinkedList() {
-		head = current = new Node(null);
-		size = 0;
-	}
+    public LinkedList() {
+        this.head = this.current = new Node(null, null);
+        this.size = 0;
+    }
 
-	private void index(int index) throws Exception {
-		if (index < -1 || index > size - 1)
-			throw new Exception("index参数不合法");
-		if (index == -1)
-			return;
-		current = head.next;
-		int j = 0;
-		while (current != null && j < index) {
-			current = current.next;
-			j++;
-		}
-	}
+    private void index(int index) throws Exception {
+        if (index < -1 || index > size) {
+            throw new Exception("index参数不合法,合理取值应为[-1," + size + "]");
+        }
+        if (index == -1) {
+            current = head;
+            return;
+        }
+        current = head.next;
+        int i = 0;
+        while (current != null && i != index) {
+            current = current.next;
+            i++;
+        }
+    }
 
-	@Override
-	public int size() {
-		return size;
-	}
+    @Override
+    public int size() {
+        return size;
+    }
 
-	@Override
-	public boolean isEmpty() {
-		return size == 0;
-	}
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
 
-	@Override
-	public void insert(int index, Object obj) throws Exception {
-		if (index < 0 || index > size)
-			throw new Exception("index参数不合法");
-		index(index - 1);
-		current.next = new Node(obj, current.next);
-		size++;
-	}
+    @Override
+    public void insert(int index, Object obj) throws Exception {
+        if ((index < -1 || index > size)) {
+            throw new Exception("index参数不合法,合理取值应为[-1," + size + "]");
+        }
+        index(index - 1);
+        current.next = new Node(obj, current.next);
+        size++;
+    }
 
-	@Override
-	public void delete(int index) throws Exception {
-		if (index < 0 || index > size - 1)
-			throw new Exception("index参数不合法");
-		index(index - 1);
-		current.next = current.next.next;
-		size--;
-	}
+    @Override
+    public void delete(int index) throws Exception {
+        if (index < 0 || index > size - 1) {
+            throw new Exception("index参数不合法,合理取值应为[0," + (size - 1) + "]");
+        }
+        index(index - 1);
+        current.next = current.next.next;
+        size--;
+    }
 
-	@Override
-	public Object get(int index) throws Exception {
-		if (index < 0 || index > size - 1)
-			throw new Exception("index参数不合法");
-		index(index);
-		return current.element;
-	}
-
+    @Override
+    public Object get(int index) throws Exception {
+        if (index < 0 || index > size - 1) {
+            throw new Exception("index参数不合法,合理取值应为[0," + (size - 1) + "]");
+        }
+        index(index);
+        return current.element;
+    }
 }

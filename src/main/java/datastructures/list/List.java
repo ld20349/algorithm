@@ -3,11 +3,11 @@ package datastructures.list;
 public interface List {
 	int size();
 
-	boolean isEmpty();
+    boolean isEmpty();
 
-	void insert(int index, Object obj) throws Exception;
+    void insert(int index,Object obj) throws Exception;
 
-	void delete(int index) throws Exception;
+    void delete(int index) throws Exception;
 
-	Object get(int index) throws Exception;
+    Object get(int index) throws Exception;
 }
