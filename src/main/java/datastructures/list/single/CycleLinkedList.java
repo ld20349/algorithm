@@ -2,6 +2,9 @@ package datastructures.list.single;
 
 import datastructures.list.List;
 
+/**
+ * 参见:http://www.cnblogs.com/smyhvae/p/4768538.html
+ */
 public class CycleLinkedList implements List {
     private Node head;
     private Node current;
@@ -14,8 +17,8 @@ public class CycleLinkedList implements List {
     }
 
     private void index(int index) throws Exception {
-        if (index < -1 || index > size) {
-            throw new Exception("index参数不合法,合理取值应为[-1," + size + "]");
+        if (index < -1 || index > size - 1) {
+            throw new Exception("index参数不合法,合理取值应为[-1," + (size - 1) + "]");
         }
         if (index == -1) {
             current = head;
@@ -23,7 +26,7 @@ public class CycleLinkedList implements List {
         }
         current = head.next;
         int i = 0;
-        while (current != head && i != index) {
+        while (current != head && i < index) {
             current = current.next;
             i++;
         }
@@ -41,8 +44,8 @@ public class CycleLinkedList implements List {
 
     @Override
     public void insert(int index, Object obj) throws Exception {
-        if ((index < -1 || index > size)) {
-            throw new Exception("index参数不合法,合理取值应为[-1," + size + "]");
+        if (index < 0 || index > size) {
+            throw new Exception("index参数不合法,合理取值应为[0," + size + "]");
         }
         index(index - 1);
         current.next = new Node(obj, current.next);
