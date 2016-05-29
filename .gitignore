@@ -4,6 +4,12 @@
 
 .fatjar
 
+.iml
+
 /target
 
 /.settings
+
+/.idea
+
+
