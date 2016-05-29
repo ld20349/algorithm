@@ -48,61 +48,41 @@ public class BinaryTree {
         return node == null ? 0 : 1 + size(node.left) + size(node.right);
     }
 
-    public TreeNode parent(TreeNode element) {
-        return parent(root, element);
+    public TreeNode parent(TreeNode node) {
+        return parent(root, node);
     }
 
-    private TreeNode parent(TreeNode subTree, TreeNode element) {
-        if (subTree == null)
+    private TreeNode parent(TreeNode root, TreeNode node) {
+        if (root == null)
             return null;
-        if (subTree.left == element || subTree.right == element)
-            return subTree;
-        TreeNode p = parent(subTree.left, element);
-        return p != null ? p : parent(subTree.right, element);
+        if (root.left == node || root.right == node)
+            return root;
+        TreeNode l = parent(root.left, node);
+        return l != null ? l : parent(root.right, node);
     }
 
-    public TreeNode getLeftChildNode(TreeNode element) {
-        return element == null ? null : element.left;
+    public TreeNode getLeftChildNode(TreeNode node) {
+        return node == null ? null : node.left;
     }
 
-    public TreeNode getRightChildNode(TreeNode element) {
-        return (element == null) ? null : element.right;
+    public TreeNode getRightChildNode(TreeNode node) {
+        return (node == null) ? null : node.right;
     }
 
     public TreeNode getRoot() {
         return root;
     }
 
-    public void destroy(TreeNode subTree) {
-        if (subTree != null) {
-            destroy(subTree.left);
-            destroy(subTree.right);
-            subTree = null;
+    public void destory() {
+        destory(root);
+    }
+
+    public void destory(TreeNode node) {
+        if (node != null) {
+            destory(node.left);
+            destory(node.right);
+            node = null;
         }
-    }
-
-    private void preorderTraversal(TreeNode subTree) {
-        if (subTree == null)
-            return;
-        System.out.print(subTree.data + " ");
-        preorderTraversal(subTree.left);
-        preorderTraversal(subTree.right);
-    }
-
-    private void inorderTraversal(TreeNode subTree) {
-        if (subTree == null)
-            return;
-        inorderTraversal(subTree.left);
-        System.out.print(subTree.data + " ");
-        inorderTraversal(subTree.right);
-    }
-
-    private void postorderTraversal(TreeNode subTree) {
-        if (subTree == null)
-            return;
-        postorderTraversal(subTree.left);
-        postorderTraversal(subTree.right);
-        System.out.print(subTree.data + " ");
     }
 
     /**
@@ -112,6 +92,14 @@ public class BinaryTree {
         preorderTraversal(root);
     }
 
+    private void preorderTraversal(TreeNode node) {
+        if (node == null)
+            return;
+        System.out.print(node.data + " ");
+        preorderTraversal(node.left);
+        preorderTraversal(node.right);
+    }
+
     /**
      * 递归中序遍历 结果应为：D B E A C F
      */
@@ -119,11 +107,27 @@ public class BinaryTree {
         inorderTraversal(root);
     }
 
+    private void inorderTraversal(TreeNode node) {
+        if (node == null)
+            return;
+        inorderTraversal(node.left);
+        System.out.print(node.data + " ");
+        inorderTraversal(node.right);
+    }
+
     /**
      * 递归后序遍历 结果应为：D E B F C A
      */
     public void postorderTraversal() {
         postorderTraversal(root);
+    }
+
+    private void postorderTraversal(TreeNode node) {
+        if (node == null)
+            return;
+        postorderTraversal(node.left);
+        postorderTraversal(node.right);
+        System.out.print(node.data + " ");
     }
 
     /**
@@ -167,9 +171,9 @@ public class BinaryTree {
      */
     public void postorderTraversalNonRecursive() {
         Stack<TreeNode> s = new Stack<>();
+        s.push(root);
         TreeNode cur;
         TreeNode pre = null;
-        s.push(root);
         while (!s.empty()) {
             cur = s.peek();
             if ((cur.left == null && cur.right == null)
